@@ -2,13 +2,13 @@
 
 import { AccordionItem, AccordionTrigger } from '@/components/ui/accordion'
 import { Button } from '@/components/ui/button'
+import { Skeleton } from '@/components/ui/skeleton'
 import { cn } from '@/lib/utils'
 import type { OrganizationResource } from '@clerk/types'
 import { AccordionContent } from '@radix-ui/react-accordion'
 import { Activity, CreditCard, Layout, Settings } from 'lucide-react'
 import Image from 'next/image'
 import { usePathname, useRouter } from 'next/navigation'
-import { FC } from 'react'
 
 interface NavItemProps {
   isActive: boolean
@@ -23,12 +23,12 @@ type RouteType = {
   href: string
 }
 
-export const NavItem: FC<NavItemProps> = ({
+export const NavItem = ({
   isActive,
   isExpanded,
   onExpand,
   organization,
-}) => {
+}: NavItemProps) => {
   const router = useRouter()
   const pathname = usePathname()
 
@@ -98,5 +98,14 @@ export const NavItem: FC<NavItemProps> = ({
         ))}
       </AccordionContent>
     </AccordionItem>
+  )
+}
+
+NavItem.Skeleton = function SkeletonNavItem() {
+  return (
+    <div className='flex h-10 items-center gap-2'>
+      <Skeleton className='h-full w-10 shrink-0' />
+      <Skeleton className='h-full w-full' />
+    </div>
   )
 }
