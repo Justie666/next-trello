@@ -4,11 +4,13 @@ import { NavbarWrapper } from '@/components/ui/navbar-wrapper'
 import { OrganizationSwitcher, UserButton } from '@clerk/nextjs'
 import { Plus } from 'lucide-react'
 import { FC } from 'react'
+import { MobileSidebar } from './mobile-sidebar'
 
 export const Navbar: FC = () => {
   return (
     <NavbarWrapper>
       <div className='flex items-center gap-4'>
+        <MobileSidebar />
         <Logo />
         <Button variant='primary' size='sm' className='hidden md:block'>
           Create
